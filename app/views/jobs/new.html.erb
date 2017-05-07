@@ -1,0 +1,42 @@
+<h1>this is a new job</h1>
+
+<%= form_for :job, url: jobs_path do |job| %>
+<% if @job.errors.any? %>
+<div id="errors_explanation">
+  <h2>
+    <%= pluralize(@job.errors.count,"error")%>
+    prevent this jobs from being saved:
+  </h2>
+</div>
+<ul>
+  <%@jobs.errors.full_messages.each do |msg| %>
+    <li><%= mgs %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<p>
+  <%= job.text_area :description, :palceholder =>
+  "Body" %>
+</p>
+
+<p>
+  <%= job.label "Start" %>
+  <%= job.select :origin,[["Miami"],["New York"],["Mexico"]]%>
+</p>
+
+<p>
+  <%= job.label "End" %>
+  <%= job.select :destination,[["Miami"],["New York"],["Mexico"]]%>
+</p>
+
+<p>
+  <%= job.number_field :container_count,
+  :placeholder => "Total containers" %>
+</p>
+<%= job.number_field :cost,
+:placeholder => "Total cost", step: :any %>
+<p>
+  <%= job.submit "create job" %>
+</p>
+<% end %>
