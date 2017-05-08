@@ -1,0 +1,19 @@
+new job is made page.
+
+<%= @job.description%><br>
+<%= @job.origin %><br>
+<%= @job.destination%><br>
+<%= @job.cost %><br>
+
+<strong> Boat Assingned: <%=@job.boat_ids.length %>
+  <% @boats.each do |boat| %>
+  <ul>
+    <li>
+      <%= boat.name %>
+    </li>
+  <li>
+    <%= boat.containers %>
+    container(s)
+  </li>
+  </ul>
+<% end %>

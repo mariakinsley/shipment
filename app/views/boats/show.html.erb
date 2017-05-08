@@ -1,0 +1,8 @@
+new boat page.
+
+  <%= @boat.name%><br>
+  <%= @boat.containers%><br>
+  <%= @boat.location%><br>
+<p>
+<%= link_to "Delete Boat", '/boats/'+@boat.id.to_s , method:  :delete %>
+</p>

@@ -9,14 +9,14 @@
   </h2>
 </div>
 <ul>
-  <%@jobs.errors.full_messages.each do |msg| %>
-    <li><%= mgs %></li>
+  <% @job.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
   <% end %>
 </ul>
 <% end %>
 
 <p>
-  <%= job.text_area :description, :palceholder =>
+  <%= job.text_area :description, :placeholder =>
   "Body" %>
 </p>
 
@@ -24,6 +24,10 @@
   <%= job.label "Start" %>
   <%= job.select :origin,[["Miami"],["New York"],["Mexico"]]%>
 </p>
+
+<%= job.label "Add boats"%>
+<p><%= job.collection_check_boxes :boat_ids, Boat.all, :id, :name%></p>
+
 
 <p>
   <%= job.label "End" %>
@@ -34,8 +38,10 @@
   <%= job.number_field :container_count,
   :placeholder => "Total containers" %>
 </p>
+
 <%= job.number_field :cost,
 :placeholder => "Total cost", step: :any %>
+
 <p>
   <%= job.submit "create job" %>
 </p>

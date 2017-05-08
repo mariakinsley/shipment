@@ -1,0 +1,3 @@
+<% @jobs.each do |display| %>
+<%= link_to "#{display.description}",edit_job_path(display) %>
+<% end %>

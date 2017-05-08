@@ -1,0 +1,37 @@
+<h1>this is a edit_page_for_boats</h1>
+
+<%= form_for (@boat)  do |boat| %>
+<% if @boat.errors.any? %>
+<div id="errors_explanation">
+  <h2>
+    <%= pluralize(@boat.errors.count,"error")%>
+    prevent this jobs from being saved:
+  </h2>
+</div>
+<ul>
+  <%@boats.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<p>
+  <%= boat.label "name" %>
+  <%= boat.text_field :name%>
+</p>
+
+<p>
+  <%= boat.label "location" %>
+  <%= boat.select :location,[["Miami"],["New York"],["Mexico"]]%>
+</p>
+
+<p>
+  <%= boat.number_field :containers,
+  :placeholder => "containers" %>
+</p>
+
+
+<p>
+  <%= boat.submit "Edit Boat" %>
+</p>
+<% end %>

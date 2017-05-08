@@ -1,0 +1,5 @@
+<% @boats.each do |display| %>
+<%= link_to "#{display.name}",edit_boat_path(display) %>
+<%= display.containers%>
+<%= display.location %>
+<% end %>

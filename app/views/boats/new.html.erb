@@ -1,0 +1,39 @@
+<h1>this is a new boat_views_new.</h1>
+
+<%= form_for :boat, url: boats_path do |boat| %>
+<% if @boat.errors.any? %>
+<div id="errors_explanation">
+  <h2>
+    <%= pluralize(@boat.errors.count,"error")%>
+    prevent this jobs from being saved:
+  </h2>
+</div>
+<ul>
+  <%@boat.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
+
+<p>
+  <%= boat.label "name" %>
+  <%= boat.text_field :name%>
+</p>
+
+<p>
+  <%= boat.label "location" %>
+  <%= boat.select :location,[["Miami"],["New York"],["Mexico"]]%>
+</p>
+
+<p>
+  <%= boat.number_field :containers,
+  :placeholder => "containers" %>
+</p>
+
+
+<p>
+  <%= boat.submit "create Boat" %>
+</p>
+<% end %>
