@@ -12,6 +12,10 @@ class BoatsController < ApplicationController
 
      @boat = Boat.new(boat_params)
      if @boat.save
+       respond_to do |format|
+         format.js
+         format.html
+       end
        redirect_to boat_path(@boat)
      else
        render 'new'
